@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Interest Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <h2>Calculator Hub</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="compound-interest.html">Compound Interest</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Simple Interest Calculator</h1>
+    <input type="number" id="principal" placeholder="Principal (₹)" />
+    <input type="number" id="rate" placeholder="Rate (%)" />
+    <input type="number" id="time" placeholder="Time (years)" />
+    <br />
+    <button onclick="calculateInterest()">Calculate</button>
+    <div class="result" id="result"></div>
+  </main>
+
+  <script>
+    function calculateInterest() {
+      const p = parseFloat(document.getElementById("principal").value);
+      const r = parseFloat(document.getElementById("rate").value);
+      const t = parseFloat(document.getElementById("time").value);
+
+      if (isNaN(p) || isNaN(r) || isNaN(t)) {
+        document.getElementById("result").innerText = "Please enter valid inputs.";
+        return;
+      }
+
+      const si = (p * r * t) / 100;
+      const total = p + si;
+
+      document.getElementById("result").innerText =
+        `Simple Interest: ₹${si.toFixed(2)} | Total Amount: ₹${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
